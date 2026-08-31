@@ -86,7 +86,7 @@
 .photo-nav.previous {
     left: 20px;
 }
-
+2
 .photo-nav.next {
     right: 20px;
 }
@@ -209,7 +209,58 @@
             color: #ddd;
 
         }
+.hero-content {
+    max-width: 850px;
+}
 
+.hero-tagline {
+    font-size: 20px;
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+.hero-description {
+    max-width: 650px;
+    margin: 0 auto 30px;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.hero-button {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: 0.2s ease;
+}
+
+.hero-button.primary {
+    background: #fff;
+    color: #111;
+}
+
+.hero-button.primary:hover {
+    background: #ddd;
+}
+
+.hero-button.secondary {
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.hero-button.secondary:hover {
+    background: #fff;
+    color: #111;
+}
 
 
         /* Sections */
@@ -440,19 +491,37 @@
 
 
 
-    <!-- Hero -->
+<!-- Hero -->
 
-    <header class="hero">
+<header class="hero">
 
-        <div>
+    <div class="hero-content">
 
-            <h1>Outpost</h1>
+        <h1>Outpost</h1>
 
-            <p>Photography • Adventure • Life</p>
+        <p class="hero-tagline">Photography • Adventure • Life</p>
+
+        <p class="hero-description">
+            A place to discover photography, share your adventures,
+            and connect with people who love getting out there.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#gallery" class="hero-button primary">
+                Explore Photos
+            </a>
+
+            <a href="#" class="hero-button secondary">
+                Create an Account
+            </a>
 
         </div>
 
-    </header>
+    </div>
+
+</header>
+
 
 
 
