@@ -333,7 +333,49 @@
 
         }
 
+/* Features */
 
+.features {
+    max-width: 1100px;
+    margin: 60px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.feature {
+    background: #191919;
+    padding: 35px 25px;
+    text-align: center;
+    border: 1px solid #2d2d2d;
+    border-radius: 8px;
+}
+
+.feature-icon {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.feature h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.feature p {
+    color: #bbb;
+    line-height: 1.6;
+}
+
+/* Mobile Features */
+
+@media (max-width: 700px) {
+
+    .features {
+        grid-template-columns: 1fr;
+        margin-top: 40px;
+    }
+
+}
 
         /* About */
 
@@ -523,7 +565,53 @@
 </header>
 
 
+<!-- What Is Outpost? -->
 
+<section id="gallery">
+
+    <div class="about">
+
+        <h2 class="section-title">What Is Outpost?</h2>
+
+        <p>
+            Outpost is a place to discover photography, share your adventures,
+            and connect with people who love getting out there.
+        </p>
+
+    </div>
+
+    <div class="features">
+
+        <div class="feature">
+            <div class="feature-icon">📸</div>
+            <h3>Discover</h3>
+            <p>
+                Explore photography and discover new perspectives
+                from the Outpost community.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">🌲</div>
+            <h3>Share</h3>
+            <p>
+                Create an account and share your own photos,
+                adventures, and experiences.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">👥</div>
+            <h3>Connect</h3>
+            <p>
+                Find friends, interact with other photographers,
+                and become part of the community.
+            </p>
+        </div>
+
+    </div>
+
+</section>
 
 
 
