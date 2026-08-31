@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <title>Your Name Photography</title>
+
+
+
+    <style>
+
+        * {
+
+            box-sizing: border-box;
+
+            margin: 0;
+
+            padding: 0;
+
+        }
+
+
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            background: #111;
+
+            color: #fff;
+
+        }
+
+
+
+        /* Navigation */
+
+        nav {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
+            background: rgba(17, 17, 17, 0.95);
+
+            padding: 20px 6%;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            border-bottom: 1px solid #333;
+
+        }
+
+
+
+        .logo {
+
+            font-size: 24px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+        }
+
+
+
+        nav a {
+
+            color: #fff;
+
+            text-decoration: none;
+
+            margin-left: 25px;
+
+            font-size: 15px;
+
+        }
+
+
+
+        nav a:hover {
+
+            color: #aaa;
+
+        }
+
+
+
+        /* Hero */
+
+        .hero {
+
+            min-height: 70vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 60px 20px;
+
+            background:
+
+                linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.75)),
+
+                url("https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=2000&q=80")
+
+                center/cover;
+
+        }
+
+
+
+        .hero h1 {
+
+            font-size: clamp(45px, 8vw, 90px);
+
+            margin-bottom: 15px;
+
+            letter-spacing: 4px;
+
+        }
+
+
+
+        .hero p {
+
+            font-size: 20px;
+
+            color: #ddd;
+
+        }
+
+
+
+        /* Sections */
+
+        section {
+
+            padding: 80px 6%;
+
+        }
+
+
+
+        .section-title {
+
+            text-align: center;
+
+            font-size: 36px;
+
+            margin-bottom: 45px;
+
+        }
+
+
+
+        /* Gallery */
+
+        .gallery {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+            gap: 18px;
+
+        }
+
+
+
+        .photo {
+
+            overflow: hidden;
+
+            border-radius: 8px;
+
+            background: #222;
+
+        }
+
+
+
+        .photo img {
+
+            width: 100%;
+
+            height: 350px;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition: transform .4s ease;
+
+        }
+
+
+
+        .photo:hover img {
+
+            transform: scale(1.05);
+
+        }
+
+
+
+        /* About */
+
+        .about {
+
+            max-width: 800px;
+
+            margin: auto;
+
+            text-align: center;
+
+        }
+
+
+
+        .about p {
+
+            color: #ccc;
+
+            font-size: 18px;
+
+            line-height: 1.8;
+
+        }
+
+
+
+        /* Contact */
+
+        .contact {
+
+            text-align: center;
+
+            background: #191919;
+
+        }
+
+
+
+        .contact a {
+
+            display: inline-block;
+
+            margin-top: 20px;
+
+            padding: 14px 28px;
+
+            border: 1px solid #fff;
+
+            color: #fff;
+
+            text-decoration: none;
+
+            border-radius: 5px;
+
+        }
+
+
+
+        .contact a:hover {
+
+            background: #fff;
+
+            color: #111;
+
+        }
+
+
+
+        /* Footer */
+
+        footer {
+
+            text-align: center;
+
+            padding: 30px;
+
+            color: #777;
+
+            font-size: 14px;
+
+        }
+
+
+
+        /* Mobile */
+
+        @media (max-width: 600px) {
+
+            nav {
+
+                padding: 15px 5%;
+
+            }
+
+
+
+            nav a {
+
+                margin-left: 10px;
+
+                font-size: 13px;
+
+            }
+
+
+
+            .hero {
+
+                min-height: 60vh;
+
+            }
+
+
+
+            section {
+
+                padding: 60px 5%;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+
+    <!-- Navigation -->
+
+    <nav>
+
+        <div class="logo">YOUR NAME</div>
+
+
+
+        <div>
+
+            <a href="#gallery">Photos</a>
+
+            <a href="#about">About</a>
+
+            <a href="#contact">Contact</a>
+
+        </div>
+
+    </nav>
+
+
+
+
+
+    <!-- Hero -->
+
+    <header class="hero">
+
+        <div>
+
+            <h1>YOUR NAME</h1>
+
+            <p>Photography • Adventure • Life</p>
+
+        </div>
+
+    </header>
+
+
+
+
+
+    <!-- Gallery -->
+
+    <section id="gallery">
+
+
+
+        <h2 class="section-title">Featured Photos</h2>
+
+
+
+        <div class="gallery">
+
+
+
+            <div class="photo">
+
+                <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1000&q=80" alt="Photography">
+
+            </div>
+
+
+
+            <div class="photo">
+
+                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80" alt="Photography">
+
+            </div>
+
+
+
+            <div class="photo">
+
+                <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1000&q=80" alt="Photography">
+
+            </div>
+
+
+
+            <div class="photo">
+
+                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1000&q=80" alt="Photography">
+
+            </div>
+
+
+
+            <div class="photo">
+
+                <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1000&q=80" alt="Photography">
+
+            </div>
+
+
+
+            <div class="photo">
+
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=80" alt="Photography">
+
+            </div>
+
+
+
+        </div>
+
+    </section>
+
+
+
+
+
+    <!-- About -->
+
+    <section id="about">
+
+
+
+        <div class="about">
+
+
+
+            <h2 class="section-title">About</h2>
+
+
+
+            <p>
+
+                Welcome to my photography portfolio.
+
+                This is where I share my favorite photographs,
+
+                adventures, and moments I've captured.
+
+            </p>
+
+
+
+        </div>
+
+
+
+    </section>
+
+
+
+
+
+    <!-- Contact -->
+
+    <section id="contact" class="contact">
+
+
+
+        <h2 class="section-title">Get In Touch</h2>
+
+
+
+        <p>Want to work together or just say hello?</p>
+
+
+
+        <a href="mailto:youremail@example.com">
+
+            Contact Me
+
+        </a>
+
+
+
+    </section>
+
+
+
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        © 2026 Your Name Photography
+
+    </footer>
+
+
+
+</body>
+
+</html>
