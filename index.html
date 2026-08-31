@@ -65,7 +65,31 @@
 .photo img {
     cursor: pointer;
 }
+.photo-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 60px;
+    width: 60px;
+    height: 90px;
+    cursor: pointer;
+    z-index: 1001;
+}
 
+.photo-nav:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.photo-nav.previous {
+    left: 20px;
+}
+
+.photo-nav.next {
+    right: 20px;
+}
         body {
 
             font-family: Arial, sans-serif;
@@ -585,8 +609,15 @@
 
 <!-- Full Screen Photo Viewer -->
 <div id="photoViewer" class="photo-viewer">
+
     <button class="close-viewer" onclick="closePhoto()">×</button>
+
+    <button class="photo-nav previous" onclick="previousPhoto()">‹</button>
+
     <img id="fullPhoto" src="" alt="Full size photo">
+
+    <button class="photo-nav next" onclick="nextPhoto()">›</button>
+
 </div>
 
 <script>
@@ -594,13 +625,40 @@
     const viewer = document.getElementById("photoViewer");
     const fullPhoto = document.getElementById("fullPhoto");
 
-    photos.forEach(photo => {
+    let currentPhoto = 0;
+
+    photos.forEach((photo, index) => {
         photo.addEventListener("click", () => {
-            fullPhoto.src = photo.src;
-            fullPhoto.alt = photo.alt;
+            currentPhoto = index;
+            showPhoto();
             viewer.classList.add("active");
         });
     });
+
+    function showPhoto() {
+        fullPhoto.src = photos[currentPhoto].src;
+        fullPhoto.alt = photos[currentPhoto].alt;
+    }
+
+    function nextPhoto() {
+        currentPhoto++;
+
+        if (currentPhoto >= photos.length) {
+            currentPhoto = 0;
+        }
+
+        showPhoto();
+    }
+
+    function previousPhoto() {
+        currentPhoto--;
+
+        if (currentPhoto < 0) {
+            currentPhoto = photos.length - 1;
+        }
+
+        showPhoto();
+    }
 
     function closePhoto() {
         viewer.classList.remove("active");
@@ -608,6 +666,25 @@
 
     viewer.addEventListener("click", (event) => {
         if (event.target === viewer) {
+            closePhoto();
+        }
+    });
+
+    document.addEventListener("keydown", (event) => {
+
+        if (!viewer.classList.contains("active")) {
+            return;
+        }
+
+        if (event.key === "ArrowRight") {
+            nextPhoto();
+        }
+
+        if (event.key === "ArrowLeft") {
+            previousPhoto();
+        }
+
+        if (event.key === "Escape") {
             closePhoto();
         }
     });
