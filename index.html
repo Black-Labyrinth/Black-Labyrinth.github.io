@@ -26,7 +26,45 @@
 
         }
 
+/* Full Screen Photo Viewer */
 
+.photo-viewer {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.photo-viewer.active {
+    display: flex;
+}
+
+.photo-viewer img {
+    max-width: 95%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.close-viewer {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 45px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.photo img {
+    cursor: pointer;
+}
 
         body {
 
@@ -545,7 +583,35 @@
 
     </footer>
 
+<!-- Full Screen Photo Viewer -->
+<div id="photoViewer" class="photo-viewer">
+    <button class="close-viewer" onclick="closePhoto()">×</button>
+    <img id="fullPhoto" src="" alt="Full size photo">
+</div>
 
+<script>
+    const photos = document.querySelectorAll(".photo img");
+    const viewer = document.getElementById("photoViewer");
+    const fullPhoto = document.getElementById("fullPhoto");
+
+    photos.forEach(photo => {
+        photo.addEventListener("click", () => {
+            fullPhoto.src = photo.src;
+            fullPhoto.alt = photo.alt;
+            viewer.classList.add("active");
+        });
+    });
+
+    function closePhoto() {
+        viewer.classList.remove("active");
+    }
+
+    viewer.addEventListener("click", (event) => {
+        if (event.target === viewer) {
+            closePhoto();
+        }
+    });
+</script>
 
 </body>
 
