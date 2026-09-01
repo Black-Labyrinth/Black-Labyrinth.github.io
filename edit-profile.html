@@ -270,15 +270,39 @@
 
         }
 
-        const username = user.user_metadata?.username || "";
+        const displayName =
+            user.user_metadata?.display_name || "";
 
+        const username =
+            user.user_metadata?.username || "";
+
+        const bio =
+            user.user_metadata?.bio || "";
+
+        document.getElementById("displayName").value = displayName;
         document.getElementById("username").value = username;
+        document.getElementById("bio").value = bio;
 
     }
+
 
     profileForm.addEventListener("submit", async function(event) {
 
         event.preventDefault();
+
+        const {
+            data: { user },
+            error: userError
+        } = await supabaseClient.auth.getUser();
+
+        if (userError || !user) {
+
+            alert("You must be logged in.");
+            window.location.href = "login.html";
+            return;
+
+        }
+
 
         const displayName =
             document.getElementById("displayName").value.trim();
@@ -289,28 +313,93 @@
         const bio =
             document.getElementById("bio").value.trim();
 
-        const { data, error } = await supabaseClient.auth.updateUser({
+        const avatarFile =
+            document.getElementById("avatar").files[0];
 
-            data: {
-                display_name: displayName,
-                username: username,
-                bio: bio
+
+        let avatarUrl =
+            user.user_metadata?.avatar_url || null;
+
+
+        /* Upload profile picture */
+
+        if (avatarFile) {
+
+            if (avatarFile.size > 5 * 1024 * 1024) {
+
+                alert("Your profile picture must be smaller than 5 MB.");
+                return;
+
             }
 
-        });
 
-        if (error) {
+            const fileExtension =
+                avatarFile.name.split(".").pop().toLowerCase();
 
-            alert(error.message);
+            const filePath =
+                user.id + "." + fileExtension;
+
+
+            const { error: uploadError } =
+                await supabaseClient.storage
+                    .from("avatars")
+                    .upload(filePath, avatarFile, {
+                        upsert: true,
+                        contentType: avatarFile.type
+                    });
+
+
+            if (uploadError) {
+
+                alert(uploadError.message);
+                return;
+
+            }
+
+
+            const { data: publicUrlData } =
+                supabaseClient.storage
+                    .from("avatars")
+                    .getPublicUrl(filePath);
+
+
+            avatarUrl =
+                publicUrlData.publicUrl;
+
+        }
+
+
+        /* Save profile information */
+
+        const { error: updateError } =
+            await supabaseClient.auth.updateUser({
+
+                data: {
+
+                    display_name: displayName,
+                    username: username,
+                    bio: bio,
+                    avatar_url: avatarUrl
+
+                }
+
+            });
+
+
+        if (updateError) {
+
+            alert(updateError.message);
             return;
 
         }
+
 
         alert("Your profile has been saved!");
 
         window.location.href = "profile.html";
 
     });
+
 
     loadProfile();
 
