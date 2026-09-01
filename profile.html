@@ -314,6 +314,45 @@
 
     </main>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+    const SUPABASE_URL = "https://atidbmhwrslvylvnjvym.supabase.co";
+    const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_YHJV9Kmt5N8uJ23f28ufRA_lFs3GGHg";
+
+    const supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+    async function loadProfile() {
+
+        const {
+            data: { user },
+            error
+        } = await supabaseClient.auth.getUser();
+
+        if (error || !user) {
+
+            window.location.href = "login.html";
+            return;
+
+        }
+
+        const username = user.user_metadata?.username || "username";
+
+        document.querySelector(".profile-info h1").textContent = username;
+
+        document.querySelector(".username").textContent =
+            "@" + username;
+
+    }
+
+    loadProfile();
+
+</script>
+
 </body>
 
 </html>
