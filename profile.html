@@ -82,7 +82,14 @@
             font-size: 50px;
             color: #777;
             flex-shrink: 0;
+    overflow: hidden;
         }
+
+        .profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
         .profile-info {
             flex: 1;
@@ -349,7 +356,15 @@ const username =
 const bio =
     user.user_metadata?.bio ||
     "Your Outpost bio will appear here.";
+const avatarUrl =
+    user.user_metadata?.avatar_url;
 
+if (avatarUrl) {
+
+    document.querySelector(".profile-picture").innerHTML =
+        `<img src="${avatarUrl}" alt="Profile picture">`;
+
+}
 document.querySelector(".profile-info h1").textContent =
     displayName;
 
