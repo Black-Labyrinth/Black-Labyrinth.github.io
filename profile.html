@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Profile | Outpost</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(17, 17, 17, 0.95);
+            padding: 20px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #aaa;
+        }
+
+        /* Profile */
+
+        .profile-container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 60px 6%;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #333;
+        }
+
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: #222;
+            border: 2px solid #444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: #777;
+            flex-shrink: 0;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-info h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .username {
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+
+        .bio {
+            color: #ccc;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        .profile-actions {
+            margin-top: 20px;
+        }
+
+        .edit-button {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .edit-button:hover {
+            background: #fff;
+            color: #111;
+        }
+
+        /* Stats */
+
+        .stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* Photos */
+
+        .photos-section {
+            margin-top: 50px;
+        }
+
+        .photos-section h2 {
+            font-size: 26px;
+            margin-bottom: 25px;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .photo-placeholder {
+            aspect-ratio: 1 / 1;
+            background: #191919;
+            border: 1px solid #292929;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+
+        /* Mobile */
+
+        @media (max-width: 600px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav a {
+                margin-left: 10px;
+                font-size: 13px;
+            }
+
+            .profile-container {
+                padding: 40px 5%;
+            }
+
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .profile-picture {
+                width: 120px;
+                height: 120px;
+                font-size: 40px;
+            }
+
+            .bio {
+                margin: auto;
+            }
+
+            .stats {
+                justify-content: center;
+                gap: 30px;
+            }
+
+            .photo-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav>
+
+        <div class="logo">Outpost</div>
+
+        <div>
+
+            <a href="index.html">Home</a>
+            <a href="index.html#gallery">Photos</a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Profile -->
+
+    <main class="profile-container">
+
+        <section class="profile-header">
+
+            <div class="profile-picture">
+                👤
+            </div>
+
+            <div class="profile-info">
+
+                <h1>Your Name</h1>
+
+                <p class="username">
+                    @username
+                </p>
+
+                <p class="bio">
+                    Your Outpost bio will appear here.
+                </p>
+
+                <div class="stats">
+
+                    <div class="stat">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Photos</span>
+                    </div>
+
+                    <div class="stat">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Friends</span>
+                    </div>
+
+                </div>
+
+                <div class="profile-actions">
+
+                    <a href="#" class="edit-button">
+                        Edit Profile
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Photos -->
+
+        <section class="photos-section">
+
+            <h2>Your Photos</h2>
+
+            <div class="photo-grid">
+
+                <div class="photo-placeholder">
+                    No photos yet
+                </div>
+
+                <div class="photo-placeholder">
+                    No photos yet
+                </div>
+
+                <div class="photo-placeholder">
+                    No photos yet
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>
