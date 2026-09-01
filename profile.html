@@ -340,12 +340,24 @@
 
         }
 
-        const username = user.user_metadata?.username || "username";
+const displayName =
+    user.user_metadata?.display_name || "Your Name";
 
-        document.querySelector(".profile-info h1").textContent = username;
+const username =
+    user.user_metadata?.username || "username";
 
-        document.querySelector(".username").textContent =
-            "@" + username;
+const bio =
+    user.user_metadata?.bio ||
+    "Your Outpost bio will appear here.";
+
+document.querySelector(".profile-info h1").textContent =
+    displayName;
+
+document.querySelector(".username").textContent =
+    "@" + username;
+
+document.querySelector(".bio").textContent =
+    bio;
 
     }
 
