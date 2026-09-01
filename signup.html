@@ -285,6 +285,62 @@
 
     </main>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+    const SUPABASE_URL = "https://atidbmhwrslvylvnjvym.supabase.co/rest/v1/";
+    const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_YHJV9Kmt5N8uJ23f28ufRA_lFs3GGHg";
+
+    const supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+    const signupForm = document.getElementById("signupForm");
+
+    signupForm.addEventListener("submit", async function(event) {
+
+        event.preventDefault();
+
+        const username = document.getElementById("username").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+
+        if (password !== confirmPassword) {
+            alert("Your passwords do not match.");
+            return;
+        }
+
+        if (password.length < 8) {
+            alert("Your password must be at least 8 characters long.");
+            return;
+        }
+
+        const { data, error } = await supabaseClient.auth.signUp({
+            email: email,
+            password: password,
+            options: {
+                data: {
+                    username: username
+                }
+            }
+        });
+
+        if (error) {
+            alert(error.message);
+            return;
+        }
+
+        alert("Account created! Please check your email to verify your Outpost account.");
+
+        signupForm.reset();
+
+    });
+
+</script>
+
 </body>
 
 </html>
