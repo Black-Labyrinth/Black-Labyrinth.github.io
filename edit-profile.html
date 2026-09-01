@@ -228,6 +228,80 @@
 
     </main>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+    const SUPABASE_URL = "https://atidbmhwrslvylvnjvym.supabase.co";
+    const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_YHJV9Kmt5N8uJ23f28ufRA_lFs3GGHg";
+
+    const supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+    const profileForm = document.getElementById("profileForm");
+
+    async function loadProfile() {
+
+        const {
+            data: { user },
+            error
+        } = await supabaseClient.auth.getUser();
+
+        if (error || !user) {
+
+            window.location.href = "login.html";
+            return;
+
+        }
+
+        const username = user.user_metadata?.username || "";
+
+        document.getElementById("username").value = username;
+
+    }
+
+    profileForm.addEventListener("submit", async function(event) {
+
+        event.preventDefault();
+
+        const displayName =
+            document.getElementById("displayName").value.trim();
+
+        const username =
+            document.getElementById("username").value.trim();
+
+        const bio =
+            document.getElementById("bio").value.trim();
+
+        const { data, error } = await supabaseClient.auth.updateUser({
+
+            data: {
+                display_name: displayName,
+                username: username,
+                bio: bio
+            }
+
+        });
+
+        if (error) {
+
+            alert(error.message);
+            return;
+
+        }
+
+        alert("Your profile has been saved!");
+
+        window.location.href = "profile.html";
+
+    });
+
+    loadProfile();
+
+</script>
+
 </body>
 
 </html>
